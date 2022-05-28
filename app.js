@@ -19,7 +19,7 @@ app.use('/', express.static(path.join(__dirname, 'static')));
 
 // Connect to MongoDB
 
-mongoose.connect(process.env.Local_CONNECT, { useNewUrlParser: true }, () => {
+mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true }, () => {
     console.log('connected to mongodb !!!');
 });
 

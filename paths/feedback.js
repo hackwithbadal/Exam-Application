@@ -2,9 +2,7 @@ const express = require('express');
 const req = require('express/lib/request');
 const res = require('express/lib/response');
 const router = express.Router();
-const QuestionModel = require("../Models//QuestionModel");
 const verifyRoute = require('../auth/auto-token');
-const path = require('path');
 const feedbackModel = require('../Models/feedbackModel');
 const { route } = require('./exam');
 const { reset } = require('nodemon');
@@ -14,7 +12,7 @@ router.use(express.json());
 router.get('/', async (req, res) => {
     console.log('Feedback form');
 })
-router.post('/', async (req, res) => {
+router.post('/',verifyRoute, async (req, res) => {
     const feedback = new feedbackModel({    
         feedback: req.body.feedback
     });
